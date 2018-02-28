@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ChessFrame extends JFrame {
-    private final int WIDTH = 800;
-    private final int HEIGHT = 600;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
 
     public ChessFrame() {
         setTitle("ChessGame");
@@ -15,7 +15,6 @@ public class ChessFrame extends JFrame {
         setVisible(true);
 
         add(new BoardPanel());
-
     }
 
     public static void main(String[] args) {
