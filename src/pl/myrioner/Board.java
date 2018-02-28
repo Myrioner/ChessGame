@@ -1,7 +1,7 @@
 package pl.myrioner;
 
 public class Board {
-    public final int NUMBER_OF_FIELDS = 8;
+    public static final int NUMBER_OF_FIELDS = 8;
     private Field[][] board;
 
     public Board() {
@@ -29,5 +29,9 @@ public class Board {
                 System.out.print(board[i][j]);
             System.out.println();
         }
+    }
+
+    Field getField(int i, int j) {
+        return board[i][j];
     }
 }

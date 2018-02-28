@@ -26,6 +26,10 @@ public class Field {
         return y;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
     @Override
     public String toString() {
         return name + " " + color.toString() + " ";

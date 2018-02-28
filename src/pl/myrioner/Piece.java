@@ -13,10 +13,6 @@ public abstract class Piece {
         this.name = name;
     }
 
-    public Color getColor() {
-        return color;
-    }
-
     public abstract void move(Field field);
 
     protected boolean checkIfOutOfBoard(Field field, int x, int y) {
@@ -28,6 +24,6 @@ public abstract class Piece {
     }
 
     protected boolean checkIfYourPiece(Piece piece) {
-        return piece.getColor().equals(this.color);
+        return piece.color.equals(this.color);
     }
 }
