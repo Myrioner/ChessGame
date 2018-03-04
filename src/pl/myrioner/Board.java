@@ -23,7 +23,9 @@ public class Board {
 
                 }
             }
+    }
 
+    public void Show() {
         for (int i = 0; i < NUMBER_OF_FIELDS ; i++) {
             for (int j = 0; j < NUMBER_OF_FIELDS; j++)
                 System.out.print(board[i][j]);
