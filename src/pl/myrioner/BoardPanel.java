@@ -43,10 +43,8 @@ public class BoardPanel extends JPanel {
                 e.printStackTrace();
             }
 
-            int width = bufferedImage.getWidth();
-            int height = bufferedImage.getHeight();
-
-            g2.drawImage(bufferedImage, 0,0,ChessFrame.WIDTH / 8,ChessFrame.HEIGHT / 8,null);
+            g2.drawImage(bufferedImage, 0,0, this.getSize().width,
+                    this.getSize().height,null);
             repaint();
         }
     }
