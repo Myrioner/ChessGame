@@ -3,6 +3,8 @@ package pl.myrioner;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,18 +20,27 @@ public class BoardPanel extends JPanel {
         for (int i = 0; i < Board.NUMBER_OF_FIELDS; i++) {
             for (int j = 0; j < Board.NUMBER_OF_FIELDS; j++) {
                 if(board.getField(i, j).getColor().equals(Field.Color.WHITE))
-                    add(new BoardField("white_field.png"));
+                    add(new BoardField("white_field.png", board.getField(i,j)));
                 else
-                    add(new BoardField("black_field.png"));
+                    add(new BoardField("black_field.png", board.getField(i,j)));
             }
         }
     }
 
     private class BoardField extends JComponent {
         String path;
+        Field field;
 
-        public BoardField(String path) {
+        public BoardField(String path, Field field) {
             this.path = path;
+            this.field = field;
+
+            addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    System.out.println(field);
+                }
+            });
         }
 
         @Override
