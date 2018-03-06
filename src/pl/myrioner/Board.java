@@ -36,4 +36,5 @@ public class Board {
     Field getField(int i, int j) {
         return board[i][j];
     }
+
 }

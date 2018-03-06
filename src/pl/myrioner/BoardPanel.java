@@ -1,13 +1,10 @@
 package pl.myrioner;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class BoardPanel extends JPanel {
     private Board board;
@@ -20,19 +17,40 @@ public class BoardPanel extends JPanel {
         for (int i = 0; i < Board.NUMBER_OF_FIELDS; i++) {
             for (int j = 0; j < Board.NUMBER_OF_FIELDS; j++) {
                 if(board.getField(i, j).getColor().equals(Field.Color.WHITE))
-                    add(new BoardField("white_field.png", board.getField(i,j)));
+                    add(new BoardField(board.getField(i,j)));
+
                 else
-                    add(new BoardField("black_field.png", board.getField(i,j)));
+                    add(new BoardField(board.getField(i,j)));
+                if (i == 2)
+                    add(new PawnField(new Pawn(Piece.Color.BLACK, 5, board.getField(i,j))));
+
             }
         }
     }
 
+    private class PawnField extends JComponent {
+        Pawn pawn;
+
+        public PawnField(Pawn pawn) {
+            this.pawn = pawn;
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g;
+
+            BufferedImage bufferedImage = pawn.getImage();
+
+            g2.drawImage(bufferedImage, 0,0, this.getSize().width,
+                    this.getSize().height,null);
+            repaint();
+        }
+    }
+
     private class BoardField extends JComponent {
-        String path;
         Field field;
 
-        public BoardField(String path, Field field) {
-            this.path = path;
+        public BoardField(Field field) {
             this.field = field;
 
             addMouseListener(new MouseAdapter() {
@@ -46,13 +64,8 @@ public class BoardPanel extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
-            BufferedImage bufferedImage = null;
 
-            try {
-                bufferedImage = ImageIO.read(new File(path));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            BufferedImage bufferedImage = field.getImage();
 
             g2.drawImage(bufferedImage, 0,0, this.getSize().width,
                     this.getSize().height,null);

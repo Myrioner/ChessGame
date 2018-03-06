@@ -1,5 +1,10 @@
 package pl.myrioner;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 public abstract class Piece {
     public enum Color {
         BLACK, WHITE
@@ -8,10 +13,19 @@ public abstract class Piece {
     private Color color;
     private String name;
 
+    protected BufferedImage image;
+    protected Field field;
+
     public Piece(Color color, String name) {
         this.color = color;
         this.name = name;
+        this.field = field;
     }
+
+    protected void loadImage(String s) throws IOException {
+        image = ImageIO.read(new File(s));
+    }
+
 
     public abstract void move(Field field);
 
