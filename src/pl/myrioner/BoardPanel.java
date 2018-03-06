@@ -21,8 +21,8 @@ public class BoardPanel extends JPanel {
 
                 else
                     add(new BoardField(board.getField(i,j)));
-                if (i == 2)
-                    add(new PawnField(new Pawn(Piece.Color.BLACK, 5, board.getField(i,j))));
+                //if (i == 2)
+                    //add(new PawnField(new Pawn(Piece.Color.BLACK, 5, board.getField(i,j))));
 
             }
         }
