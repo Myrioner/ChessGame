@@ -16,7 +16,7 @@ public abstract class Piece {
     protected BufferedImage image;
     protected Field field;
 
-    public Piece(Color color, String name) {
+    public Piece(Color color, String name, Field field) {
         this.color = color;
         this.name = name;
         this.field = field;
@@ -26,6 +26,9 @@ public abstract class Piece {
         image = ImageIO.read(new File(s));
     }
 
+    public Field getField() {
+        return field;
+    }
 
     public abstract void move(Field field);
 

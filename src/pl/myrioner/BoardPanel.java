@@ -17,12 +17,15 @@ public class BoardPanel extends JPanel {
         for (int i = 0; i < Board.NUMBER_OF_FIELDS; i++) {
             for (int j = 0; j < Board.NUMBER_OF_FIELDS; j++) {
                 if(board.getField(i, j).getColor().equals(Field.Color.WHITE))
+                    if(board.getField(i,j).getX()==2)
+                        add(new PawnField(new Pawn(Piece.Color.BLACK, 5, board.getField(i,j))));
+                    else
                     add(new BoardField(board.getField(i,j)));
-
+                else
+                if(board.getField(i,j).getX()==2)
+                    add(new PawnField(new Pawn(Piece.Color.BLACK, 5, board.getField(i,j))));
                 else
                     add(new BoardField(board.getField(i,j)));
-                //if (i == 2)
-                    //add(new PawnField(new Pawn(Piece.Color.BLACK, 5, board.getField(i,j))));
 
             }
         }
@@ -33,6 +36,13 @@ public class BoardPanel extends JPanel {
 
         public PawnField(Pawn pawn) {
             this.pawn = pawn;
+            addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    System.out.println(pawn.getField());
+                }
+            });
+
         }
 
         @Override
@@ -41,8 +51,7 @@ public class BoardPanel extends JPanel {
 
             BufferedImage bufferedImage = pawn.getImage();
 
-            g2.drawImage(bufferedImage, 0,0, this.getSize().width,
-                    this.getSize().height,null);
+            g2.drawImage(bufferedImage, 0,0, this.getSize().width, this.getSize().height,null);
             repaint();
         }
     }
@@ -67,8 +76,7 @@ public class BoardPanel extends JPanel {
 
             BufferedImage bufferedImage = field.getImage();
 
-            g2.drawImage(bufferedImage, 0,0, this.getSize().width,
-                    this.getSize().height,null);
+            g2.drawImage(bufferedImage, 0,0, this.getSize().width, this.getSize().height,null);
             repaint();
         }
     }

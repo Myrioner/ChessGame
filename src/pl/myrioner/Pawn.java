@@ -8,7 +8,7 @@ public class Pawn extends Piece {
     private boolean moved;
 
     public Pawn(Color color, int number, Field field) {
-        super(color, color.toString() + " PAWN" + number);
+        super(color, color.toString() + " PAWN" + number, field);
         moved = false;
 
         try {
@@ -23,10 +23,12 @@ public class Pawn extends Piece {
 
     public BufferedImage getImage() {return image;}
 
+
+
     @Override
     public void move(Field destinationField) {
         //if(moved) {
-            if (destinationField.getX() == field.getX() + 1 || destinationField.getY() == field.getY()) // UP
+            if (destinationField.getY() == field.getY() + 1 && destinationField.getX() == field.getX()) // UP
                 field.setX(field.getX() + 1);
         //}
     }
