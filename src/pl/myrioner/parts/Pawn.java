@@ -1,6 +1,7 @@
-package pl.myrioner;
+package pl.myrioner.parts;
 
-import java.awt.*;
+import pl.myrioner.Field;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -23,12 +24,10 @@ public class Pawn extends Piece {
 
     public BufferedImage getImage() {return image;}
 
-
-
     @Override
     public void move(Field destinationField) {
         //if(moved) {
-            if (destinationField.getY() == field.getY() + 1 && destinationField.getX() == field.getX()) // UP
+            if (destinationField.getX() == field.getX() + 1 || destinationField.getY() == field.getY()) // UP
                 field.setX(field.getX() + 1);
         //}
     }

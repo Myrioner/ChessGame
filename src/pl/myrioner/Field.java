@@ -1,8 +1,7 @@
 package pl.myrioner;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import pl.myrioner.parts.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -58,6 +57,10 @@ public class Field {
 
     public Piece getPiece() {
         return piece;
+    }
+
+    public void setPiece(Piece piece) {
+        this.piece = piece;
     }
 
     public void setX(int x) {

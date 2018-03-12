@@ -7,7 +7,7 @@ public class ChessFrame extends JFrame {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 600;
 
-    public ChessFrame(BoardPanel boardPanel) {
+    public ChessFrame() {
         setTitle("ChessGame");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width - WIDTH) / 2, (screenSize.height - HEIGHT) / 2, WIDTH, HEIGHT);
@@ -15,11 +15,15 @@ public class ChessFrame extends JFrame {
         setIconImage(new ImageIcon("ChessIcon.png").getImage());
         setVisible(true);
 
-        add(boardPanel);
+        initiate();
     }
 
     public static void main(String[] args) {
-        BoardPanel boardPanel = new BoardPanel();
-        new ChessFrame(boardPanel);
+        new ChessFrame();
+    }
+
+    public void initiate() {
+        add(new BoardPanel());
+        getComponent(0).revalidate();
     }
 }

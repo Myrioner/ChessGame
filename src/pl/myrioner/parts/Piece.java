@@ -1,5 +1,6 @@
-package pl.myrioner;
+package pl.myrioner.parts;
 
+import pl.myrioner.Field;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
