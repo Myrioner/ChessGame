@@ -1,7 +1,6 @@
 package pl.myrioner;
 
-import pl.myrioner.parts.Pawn;
-
+import pl.myrioner.parts.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
